@@ -15,12 +15,11 @@ DEFAULT_PYTHON_CODE = """# Available variables:
 # To return an action, assign: action = {...}\n\n\n\n"""
 
 
-
 class ModelTag(models.Model):
     _name = 'model.tag'
     _description = 'This model can add or remove tags to any model based on a Python eval'
 
-    name = fields.Char("Name")
+    name = fields.Char()
     model_id = fields.Many2one("ir.model", string="Model")
     model = fields.Char(related='model_id.model', string="Model name")
     tag_field_id = fields.Many2one("ir.model.fields", string="Tag Field", domain="[('model_id', '=', model_id)]")
