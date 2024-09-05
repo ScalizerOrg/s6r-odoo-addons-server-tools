@@ -1,3 +1,5 @@
 "id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
 "access_model_tag_admin","access.model.tag.admin","model_model_tag","base.group_system",1,1,1,1
 "access_model_tag_user","access.model.tag.user","model_model_tag","base.group_user",1,0,0,0
+"access_model_tag_portal","access.model.tag.portal","model_model_tag","base.group_portal",1,0,0,0
+"access_ir_model_portal","access.ir.model.portal","base.model_ir_model","base.group_portal",1,0,0,0
