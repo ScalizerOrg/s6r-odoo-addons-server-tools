@@ -16,10 +16,11 @@ class BaseModel(models.AbstractModel):
         return super(BaseModel, self).create(vals_list)
 
     def write(self, vals):
+        res = super(BaseModel, self).write(vals)
         tag_ids = self.env['model.tag'].search([('model', '=', self._name)])
         if any(field in tag_ids.mapped('trigger_field_ids.name') for field in vals):
             self._apply_tags(tag_ids, vals)
-        return super(BaseModel, self).write(vals)
+        return res
 
     def _apply_tags(self, tag_ids, vals):
         for tag in tag_ids:
