@@ -10,24 +10,25 @@ class BaseModel(models.AbstractModel):
 
     @api.model_create_multi
     def create(self, vals_list):
+        res = super(BaseModel, self).create(vals_list)
         tag_ids = self.env['model.tag'].search([('model', '=', self._name)])
-        for vals in vals_list:
-            self._apply_tags(tag_ids, vals)
-        return super(BaseModel, self).create(vals_list)
+        for rec in res:
+            rec._apply_tags(tag_ids)
+        return res
 
     def write(self, vals):
         res = super(BaseModel, self).write(vals)
         tag_ids = self.env['model.tag'].search([('model', '=', self._name)])
         if any(field in tag_ids.mapped('trigger_field_ids.name') for field in vals):
-            self._apply_tags(tag_ids, vals)
+            self._apply_tags(tag_ids)
         return res
 
-    def _apply_tags(self, tag_ids, vals):
+    def _apply_tags(self, tag_ids):
         for tag in tag_ids:
             res = []
-            local_dict = {'self': self, 'res': res, 'vals': vals}
+            local_dict = {'self': self, 'res': res}
             safe_eval(tag.compute_tags_method, SAFE_EVAL_BASE, local_dict, mode='exec', nocopy=True)
             res = local_dict['res']
             if res:
                 tags = self.env[tag.tag_field_id.relation].search([('name', 'in', res)])
-                vals[tag.tag_field_id.name] = [Command.set(tags.ids)]
+                self[tag.tag_field_id.name] = [Command.set(tags.ids)]
