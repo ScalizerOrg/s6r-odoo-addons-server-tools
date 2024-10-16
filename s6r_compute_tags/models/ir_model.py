@@ -24,11 +24,12 @@ class BaseModel(models.AbstractModel):
         return res
 
     def _apply_tags(self, tag_ids):
-        for tag in tag_ids:
-            res = []
-            local_dict = {'self': self, 'res': res}
-            safe_eval(tag.compute_tags_method, SAFE_EVAL_BASE, local_dict, mode='exec', nocopy=True)
-            res = local_dict['res']
-            if res:
-                tags = self.env[tag.tag_field_id.relation].search([('name', 'in', res)])
-                self[tag.tag_field_id.name] = [Command.set(tags.ids)]
+        for rec in self:
+            for tag in tag_ids:
+                res = []
+                local_dict = {'self': rec, 'res': res}
+                safe_eval(tag.compute_tags_method, SAFE_EVAL_BASE, local_dict, mode='exec', nocopy=True)
+                res = local_dict['res']
+                if res:
+                    tags = rec.env[tag.tag_field_id.relation].search([('name', 'in', res)])
+                    rec[tag.tag_field_id.name] = [Command.set(tags.ids)]
