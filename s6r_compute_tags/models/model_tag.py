@@ -24,7 +24,7 @@ class ModelTag(models.Model):
     model = fields.Char(related='model_id.model', string="Model name")
     tag_field_id = fields.Many2one("ir.model.fields", string="Tag Field", domain="[('model_id', '=', model_id)]")
     trigger_field_ids = fields.Many2many("ir.model.fields", string="Trigger Tag Field", domain="[('model_id', '=', model_id)]")
-    compute_tags_method = fields.Text(string='Python Code', groups='base.group_system',
+    compute_tags_method = fields.Text(string='Python Code',
                        default=DEFAULT_PYTHON_CODE,
                        help="Write Python code that the action will execute. Some variables are "
                             "available for use; help about python expression is given in the help tab.")

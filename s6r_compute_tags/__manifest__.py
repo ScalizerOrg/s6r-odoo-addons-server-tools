@@ -2,7 +2,7 @@
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).
 {
     'name': 'Scalizer Compute Tags',
-    'version': '16.0.1.0.1',
+    'version': '16.0.1.0.2',
     'author': 'Scalizer',
     'website': 'https://www.scalizer.fr',
     'summary': "Add and remove tags with python evals on any model",
