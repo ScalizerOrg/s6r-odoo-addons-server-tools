@@ -1,0 +1,132 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* s6r_compute_tags
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-21 15:48+0000\n"
+"PO-Revision-Date: 2025-01-21 15:48+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: s6r_compute_tags
+#: model:ir.model,name:s6r_compute_tags.model_base
+msgid "Base"
+msgstr "Base"
+
+#. module: s6r_compute_tags
+#: model:ir.model.fields,field_description:s6r_compute_tags.field_model_tag__compute_on_unlink
+msgid "Compute On Unlink"
+msgstr "Calculer lors de la suppression"
+
+#. module: s6r_compute_tags
+#: model:ir.model.fields,field_description:s6r_compute_tags.field_model_tag__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: s6r_compute_tags
+#: model:ir.model.fields,field_description:s6r_compute_tags.field_model_tag__create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: s6r_compute_tags
+#: model:ir.model.fields,field_description:s6r_compute_tags.field_model_tag__display_name
+msgid "Display Name"
+msgstr "Nom d'affichage"
+
+#. module: s6r_compute_tags
+#: model_terms:ir.ui.view,arch_db:s6r_compute_tags.view_model_tag_form
+msgid ""
+"Enter Python code here. Help about Python expression is available in the "
+"help tab of this document."
+msgstr ""
+"Entrez le code Python ici. L'aide sur l'expression Python est disponible dans"
+" l'onglet d'aide de ce document."
+
+#. module: s6r_compute_tags
+#: model:ir.model.fields,field_description:s6r_compute_tags.field_model_tag__id
+msgid "ID"
+msgstr "ID"
+
+#. module: s6r_compute_tags
+#: model:ir.model.fields,field_description:s6r_compute_tags.field_model_tag____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: s6r_compute_tags
+#: model:ir.model.fields,field_description:s6r_compute_tags.field_model_tag__write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: s6r_compute_tags
+#: model:ir.model.fields,field_description:s6r_compute_tags.field_model_tag__write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: s6r_compute_tags
+#: model:ir.model.fields,field_description:s6r_compute_tags.field_model_tag__model_id
+msgid "Model"
+msgstr "Modèle"
+
+#. module: s6r_compute_tags
+#: model:ir.actions.act_window,name:s6r_compute_tags.action_model_tag_tree
+#: model:ir.ui.menu,name:s6r_compute_tags.menu_model_tag
+msgid "Model Tags"
+msgstr "Tags de modèle"
+
+#. module: s6r_compute_tags
+#: model:ir.model.fields,field_description:s6r_compute_tags.field_model_tag__model
+msgid "Model name"
+msgstr "Nom du modèle"
+
+#. module: s6r_compute_tags
+#: model:ir.model.fields,field_description:s6r_compute_tags.field_model_tag__name
+msgid "Name"
+msgstr "Nom"
+
+#. module: s6r_compute_tags
+#: model:ir.model.fields,field_description:s6r_compute_tags.field_model_tag__compute_tags_method
+#: model_terms:ir.ui.view,arch_db:s6r_compute_tags.view_model_tag_form
+msgid "Python Code"
+msgstr "Code Python"
+
+#. module: s6r_compute_tags
+#: model_terms:ir.ui.view,arch_db:s6r_compute_tags.view_model_tag_form
+msgid "Server Action"
+msgstr "Action Serveur"
+
+#. module: s6r_compute_tags
+#: model:ir.model.fields,field_description:s6r_compute_tags.field_model_tag__tag_field_id
+msgid "Tag Field"
+msgstr "Champ de tag"
+
+#. module: s6r_compute_tags
+#: model:ir.model,name:s6r_compute_tags.model_model_tag
+msgid "This model can add or remove tags to any model based on a Python eval"
+msgstr "Ce modèle peut ajouter ou supprimer des tags à tout modèle basé sur une évaluation Python"
+
+#. module: s6r_compute_tags
+#: model:ir.model.fields,field_description:s6r_compute_tags.field_model_tag__trigger_field_ids
+msgid "Trigger Tag Field"
+msgstr "Champ de déclenchement de tag"
+
+#. module: s6r_compute_tags
+#: model:ir.model.fields,help:s6r_compute_tags.field_model_tag__compute_tags_method
+msgid ""
+"Write Python code that the action will execute. Some variables are available"
+" for use; help about python expression is given in the help tab."
+msgstr ""
+"Écrivez le code Python que l'action exécutera. Certaines variables sont "
+"disponibles pour utilisation ; l'aide sur l'expression Python est donnée dans"
+" l'onglet d'aide."
+
+#. module: s6r_compute_tags
+#: model_terms:ir.ui.view,arch_db:s6r_compute_tags.view_model_tag_form
+msgid "e.g. Update order quantity"
+msgstr "par exemple, mettre à jour la quantité de commande"

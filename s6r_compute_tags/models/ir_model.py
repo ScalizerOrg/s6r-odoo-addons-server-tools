@@ -23,11 +23,18 @@ class BaseModel(models.AbstractModel):
             self._apply_tags(tag_ids)
         return res
 
+    def unlink(self):
+        tag_ids = self.env['model.tag'].search([('model', '=', self._name)])
+        for tag_id in tag_ids:
+            if tag_id.compute_on_unlink:
+                self._apply_tags(tag_id)
+        return super(BaseModel, self).unlink()
+
     def _apply_tags(self, tag_ids):
         for rec in self:
             for tag in tag_ids:
                 res = []
-                local_dict = {'self': rec, 'res': res}
+                local_dict = {'self': rec, 'res': res, 'dynamic_unlink': rec.env.context.get('dynamic_unlink', False)}
                 safe_eval(tag.compute_tags_method, SAFE_EVAL_BASE, local_dict, mode='exec', nocopy=True)
                 res = local_dict['res']
                 if res:
