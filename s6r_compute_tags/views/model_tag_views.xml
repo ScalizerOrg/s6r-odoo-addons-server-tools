@@ -37,6 +37,7 @@
                             <group>
                                 <field name="tag_field_id"/>
                                 <field name="trigger_field_ids"/>
+                                <field name="compute_on_unlink"/>
                             </group>
                         </group>
                         <notebook>
