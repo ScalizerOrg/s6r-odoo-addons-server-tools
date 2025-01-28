@@ -24,10 +24,9 @@ class BaseModel(models.AbstractModel):
         return res
 
     def unlink(self):
-        tag_ids = self.env['model.tag'].search([('model', '=', self._name)])
+        tag_ids = self.env['model.tag'].search([('model', '=', self._name), ('compute_on_unlink', '=', True)])
         for tag_id in tag_ids:
-            if tag_id.compute_on_unlink:
-                self._apply_tags(tag_id)
+            self._apply_tags(tag_id)
         return super(BaseModel, self).unlink()
 
     def _apply_tags(self, tag_ids):
