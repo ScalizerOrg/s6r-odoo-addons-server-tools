@@ -33,14 +33,13 @@ class BaseModel(models.AbstractModel):
 
     def _apply_tags(self, tag_ids):
         # Créer des wrappers sécurisés pour les modules datetime et timedelta
-        safe_datetime = wrap_module(datetime, ['now', 'strptime', 'strftime'])
         safe_timedelta = wrap_module(timedelta, ['__call__', 'days', 'seconds', 'microseconds', 'total_seconds'])
 
         # Étendre le dictionnaire SAFE_EVAL_BASE
         EXTENDED_SAFE_EVAL = dict(SAFE_EVAL_BASE)
         EXTENDED_SAFE_EVAL.update({
-            'datetime': safe_datetime,
             'timedelta': safe_timedelta,
+            'current_date': datetime.now().date(),
         })
 
         for rec in self:
