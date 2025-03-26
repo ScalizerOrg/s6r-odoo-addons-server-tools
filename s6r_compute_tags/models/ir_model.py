@@ -32,21 +32,16 @@ class BaseModel(models.AbstractModel):
         return super(BaseModel, self).unlink()
 
     def _apply_tags(self, tag_ids):
-        # Créer des wrappers sécurisés pour les modules datetime et timedelta
-        safe_timedelta = wrap_module(timedelta, ['__call__', 'days', 'seconds', 'microseconds', 'total_seconds'])
-
-        # Étendre le dictionnaire SAFE_EVAL_BASE
-        EXTENDED_SAFE_EVAL = dict(SAFE_EVAL_BASE)
-        EXTENDED_SAFE_EVAL.update({
-            'timedelta': safe_timedelta,
-            'current_date': datetime.now().date(),
-        })
-
         for rec in self:
             for tag in tag_ids:
                 res = []
-                local_dict = {'self': rec, 'res': res, 'dynamic_unlink': rec.env.context.get('dynamic_unlink', False)}
-                safe_eval(tag.compute_tags_method, EXTENDED_SAFE_EVAL, local_dict, mode='exec', nocopy=True)
+                local_dict = {
+                    'self': rec,
+                    'res': res,
+                    'Date': fields.Date,
+                    'dynamic_unlink': rec.env.context.get('dynamic_unlink', False)
+                }
+                safe_eval(tag.compute_tags_method, SAFE_EVAL_BASE, local_dict, mode='exec', nocopy=True)
                 res = local_dict['res']
                 if res:
                     tags = rec.env[tag.tag_field_id.relation].search([('name', 'in', res)])
