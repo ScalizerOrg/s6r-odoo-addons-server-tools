@@ -1,10 +1,8 @@
 # Copyright 2024 Scalizer (https://www.scalizer.fr)
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 from odoo import models, api, Command, fields
-from odoo.tools.safe_eval import safe_eval, wrap_module
+from odoo.tools.safe_eval import safe_eval
 from odoo.addons.base.models.ir_model import SAFE_EVAL_BASE
-from datetime import datetime, timedelta
-
 
 
 class BaseModel(models.AbstractModel):
@@ -13,16 +11,18 @@ class BaseModel(models.AbstractModel):
     @api.model_create_multi
     def create(self, vals_list):
         res = super(BaseModel, self).create(vals_list)
-        tag_ids = self.env['model.tag'].search([('model', '=', self._name)])
-        for rec in res:
-            rec._apply_tags(tag_ids)
+        if not self.env.context.get('skip_tag_computation'):
+            tag_ids = self.env['model.tag'].search([('model', '=', self._name)])
+            for rec in res:
+                rec._apply_tags(tag_ids)
         return res
 
     def write(self, vals):
         res = super(BaseModel, self).write(vals)
-        tag_ids = self.env['model.tag'].search([('model', '=', self._name)])
-        if any(field in tag_ids.mapped('trigger_field_ids.name') for field in vals):
-            self._apply_tags(tag_ids)
+        if not self.env.context.get('skip_tag_computation'):
+            tag_ids = self.env['model.tag'].search([('model', '=', self._name)])
+            if any(field in tag_ids.mapped('trigger_field_ids.name') for field in vals):
+                self._apply_tags(tag_ids)
         return res
 
     def unlink(self):
@@ -45,4 +45,4 @@ class BaseModel(models.AbstractModel):
                 res = local_dict['res']
                 if res:
                     tags = rec.env[tag.tag_field_id.relation].search([('name', 'in', res)])
-                    rec[tag.tag_field_id.name] = [Command.set(tags.ids)]
+                    rec.with_context(skip_tag_computation=True)[tag.tag_field_id.name] = [Command.set(tags.ids)]
