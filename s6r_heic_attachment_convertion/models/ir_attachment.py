@@ -45,17 +45,17 @@ class IrAttachment(models.Model):
                         vals['datas'] = base64.b64encode(vals.get('raw', b''))
                         vals.pop('raw')
 
-                    if vals.get('datas', False):               
+                    if vals.get('datas', False):
                         try:
                             file_data = convert_heic_file(datas=vals.get('datas'),
                                                                target_format=target_format)
-                            vals.update({                
+                            vals.update({
                                 'name': f'{file_name}.{image_format.lower()}',
                                 'datas': file_data,
                                 'mimetype':f'image/{image_format.lower()}',
                             })
-                            
+
                         except Exception as err:
                             _logger.error(f"HEIC conversion to {image_format}: {err}")
-                            
+
         return super(IrAttachment, self).create(vals_list)
