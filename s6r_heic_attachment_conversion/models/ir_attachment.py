@@ -3,6 +3,7 @@
 from odoo import api, models
 from odoo.exceptions import UserError
 import io
+import os
 import base64
 from PIL import Image
 from pillow_heif import register_heif_opener
@@ -35,7 +36,8 @@ class IrAttachment(models.Model):
 
         for vals in vals_list:
             if vals.get('name', False):
-                file_name, file_extension = vals.get('name', '').split('.')
+                file_name, file_extension = os.path.splitext(vals.get('name', ''))
+                file_extension = file_extension[1:]
 
                 if file_extension.upper() == 'HEIC':
                     image_format = self.env.context.get('image_format', 'PNG')
