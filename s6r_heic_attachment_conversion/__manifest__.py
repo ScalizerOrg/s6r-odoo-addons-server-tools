@@ -1,11 +1,11 @@
 # Copyright 2025 Scalizer (<https://www.scalizer.fr>)
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).
 {
-    'name': 'Scalizer HEIC Attachment Convertion',
+    'name': 'Scalizer HEIC Attachment Conversion',
     'version': '16.0.1.0.0',
     'author': 'Scalizer',
     'website': 'https://www.scalizer.fr',
-    'summary': "HEIC Image Attachment Convertion",
+    'summary': "HEIC Image Attachment Conversion",
     'sequence': 0,
     'license': 'LGPL-3',
     'depends': [

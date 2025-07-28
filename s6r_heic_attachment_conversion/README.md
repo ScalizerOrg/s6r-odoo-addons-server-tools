@@ -1,4 +1,4 @@
-Scalizer HEIC Attachment Convertion
+Scalizer HEIC Attachment Conversion
 ===============
 
 This module converts HEIC image file to PNG or JPEG on attachment creation
@@ -6,6 +6,7 @@ This module converts HEIC image file to PNG or JPEG on attachment creation
 
 ## Usage
 
+Use `image_format` context to set the target image conversion format (`JPEG` or `PNG`)
 
 ## Authors
 
