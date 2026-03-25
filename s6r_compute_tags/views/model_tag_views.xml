@@ -32,7 +32,7 @@
                         <group name="action_wrapper">
                             <group name="action_content">
                                 <field name="model_id" options="{'no_create': True}"/>
-                                <field name="model" readonly="1"/>
+                                <field name="model" readonly="True"/>
                             </group>
                             <group>
                                 <field name="tag_field_id"/>

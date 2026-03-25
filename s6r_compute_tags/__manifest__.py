@@ -17,8 +17,6 @@
     'description': '''
 This module adds and removes tags with python evals on any model
     ''',
-    'qweb': [
-    ],
     'demo': [
     ],
     'images': [
