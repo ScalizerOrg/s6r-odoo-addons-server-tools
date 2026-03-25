@@ -1,6 +1,6 @@
 # Copyright 2024 Scalizer (https://www.scalizer.fr)
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
-from odoo import models, Command, fields, tools
+from odoo import api, models, Command, fields, tools
 from odoo.tools.safe_eval import safe_eval
 from odoo.addons.base.models.ir_model import SAFE_EVAL_BASE
 
@@ -8,11 +8,12 @@ from odoo.addons.base.models.ir_model import SAFE_EVAL_BASE
 class BaseModel(models.AbstractModel):
     _inherit = 'base'
 
+    @api.model_create_multi
     def create(self, vals_list):
         res = super(BaseModel, self).create(vals_list)
         if not tools.config["test_enable"]:
             if not self.env.context.get('skip_tag_computation'):
-                tag_ids = self.env['model.tag'].search([('model', '=', self._name)])
+                tag_ids = self.env['model.tag'].sudo().search([('model', '=', self._name)])
                 if tag_ids:
                     for rec in res:
                         rec._apply_tags(tag_ids)
@@ -22,13 +23,13 @@ class BaseModel(models.AbstractModel):
         res = super(BaseModel, self).write(vals)
         if not tools.config["test_enable"]:
             if not self.env.context.get('skip_tag_computation'):
-                tag_ids = self.env['model.tag'].search([('model', '=', self._name)])
+                tag_ids = self.env['model.tag'].sudo().search([('model', '=', self._name)])
                 if any(field in tag_ids.mapped('trigger_field_ids.name') for field in vals):
                     self._apply_tags(tag_ids)
         return res
 
     def unlink(self):
-        tag_ids = self.env['model.tag'].search([('model', '=', self._name), ('compute_on_unlink', '=', True)])
+        tag_ids = self.env['model.tag'].sudo().search([('model', '=', self._name), ('compute_on_unlink', '=', True)])
         for tag_id in tag_ids:
             self._apply_tags(tag_id)
         return super(BaseModel, self).unlink()
