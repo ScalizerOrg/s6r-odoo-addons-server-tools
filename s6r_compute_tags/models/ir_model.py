@@ -44,7 +44,7 @@ class BaseModel(models.AbstractModel):
                     'Date': fields.Date,
                     'dynamic_unlink': rec.env.context.get('dynamic_unlink', False)
                 }
-                safe_eval(tag.compute_tags_method, SAFE_EVAL_BASE, local_dict, mode='exec', nocopy=True)
+                safe_eval(tag.compute_tags_method, SAFE_EVAL_BASE, local_dict, mode='exec')
                 res = local_dict['res']
                 if res:
                     tags = rec.env[tag.tag_field_id.relation].search([('name', 'in', res)])
