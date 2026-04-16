@@ -38,14 +38,15 @@ class BaseModel(models.AbstractModel):
         for rec in self:
             for tag in tag_ids:
                 res = []
-                local_dict = {
+                eval_ctx = {
+                    **SAFE_EVAL_BASE,
                     'self': rec,
                     'res': res,
                     'Date': fields.Date,
                     'dynamic_unlink': rec.env.context.get('dynamic_unlink', False)
                 }
-                safe_eval(tag.compute_tags_method, SAFE_EVAL_BASE, local_dict, mode='exec')
-                res = local_dict['res']
+                safe_eval(tag.compute_tags_method, eval_ctx, mode='exec')
+                res = eval_ctx['res']
                 if res:
                     tags = rec.env[tag.tag_field_id.relation].search([('name', 'in', res)])
                     rec.with_context(skip_tag_computation=True)[tag.tag_field_id.name] = [Command.set(tags.ids)]
