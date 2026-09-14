@@ -1,0 +1,93 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* s6r_neutralize_server_action
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-14 12:10+0000\n"
+"PO-Revision-Date: 2026-09-14 12:10+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: s6r_neutralize_server_action
+#: model:ir.model.fields,field_description:s6r_neutralize_server_action.field_neutralize_action__name
+msgid "Action Name"
+msgstr "Nom de l'action"
+
+#. module: s6r_neutralize_server_action
+#: model:ir.model.fields,field_description:s6r_neutralize_server_action.field_neutralize_action__active
+msgid "Active"
+msgstr "Actif"
+
+#. module: s6r_neutralize_server_action
+#: model:ir.model.fields,field_description:s6r_neutralize_server_action.field_neutralize_action__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: s6r_neutralize_server_action
+#: model:ir.model.fields,field_description:s6r_neutralize_server_action.field_neutralize_action__create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: s6r_neutralize_server_action
+#: model:ir.model.fields,help:s6r_neutralize_server_action.field_neutralize_action__sequence
+msgid "Determines the execution order after the neutralization."
+msgstr "Détermine l'ordre d'exécution après la neutralisation."
+
+#. module: s6r_neutralize_server_action
+#: model:ir.model.fields,field_description:s6r_neutralize_server_action.field_neutralize_action__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: s6r_neutralize_server_action
+#: model:ir.model.fields,field_description:s6r_neutralize_server_action.field_neutralize_action__id
+msgid "ID"
+msgstr "ID"
+
+#. module: s6r_neutralize_server_action
+#: model:ir.model.fields,field_description:s6r_neutralize_server_action.field_neutralize_action__write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: s6r_neutralize_server_action
+#: model:ir.model.fields,field_description:s6r_neutralize_server_action.field_neutralize_action__write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: s6r_neutralize_server_action
+#: model:ir.actions.act_window,name:s6r_neutralize_server_action.action_neutralize_action
+#: model:ir.ui.menu,name:s6r_neutralize_server_action.menu_neutralize_action
+msgid "Neutralize Server Actions"
+msgstr "Actions serveur post-neutralisation"
+
+#. module: s6r_neutralize_server_action
+#: model:ir.model.fields,field_description:s6r_neutralize_server_action.field_neutralize_action__sequence
+msgid "Sequence"
+msgstr "Séquence"
+
+#. module: s6r_neutralize_server_action
+#: model:ir.model.fields,field_description:s6r_neutralize_server_action.field_neutralize_action__action_id
+msgid "Server Action"
+msgstr "Action serveur"
+
+#. module: s6r_neutralize_server_action
+#: model:ir.model.fields,help:s6r_neutralize_server_action.field_neutralize_action__action_id
+msgid "Server action to execute after the neutralization."
+msgstr "Action serveur à exécuter après la neutralisation."
+
+#. module: s6r_neutralize_server_action
+#: model:ir.model,name:s6r_neutralize_server_action.model_neutralize_action
+msgid "Server action to run after a database neutralization"
+msgstr "Action serveur à exécuter après une neutralisation de base de données"
+
+#. module: s6r_neutralize_server_action
+#: model:ir.model.fields,help:s6r_neutralize_server_action.field_neutralize_action__active
+msgid "Uncheck to temporarily disable this line without deleting it."
+msgstr "Décocher pour désactiver temporairement cette ligne sans la supprimer."

@@ -5,7 +5,7 @@
     'version': '19.0.1.0.0',
     'author': 'Scalizer',
     'website': 'https://www.scalizer.fr',
-    'summary': "Run configurable server actions right after a database neutralization",
+    'summary': "Run a configurable, ordered list of server actions right after a database neutralization",
     'sequence': 0,
     'certificate': '',
     'license': 'LGPL-3',
