@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_post_neutralization_action_tree" model="ir.ui.view">
+        <field name="name">post.neutralization.action.list</field>
+        <field name="model">post.neutralization.action</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="action_id"/>
+                <field name="active" widget="boolean_toggle"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_post_neutralization_action_form" model="ir.ui.view">
+        <field name="name">post.neutralization.action.form</field>
+        <field name="model">post.neutralization.action</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="sequence"/>
+                        <field name="action_id"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_post_neutralization_action" model="ir.actions.act_window">
+        <field name="name">Post Neutralization Actions</field>
+        <field name="res_model">post.neutralization.action</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_post_neutralization_action"
+              name="Post Neutralization Actions"
+              action="action_post_neutralization_action"
+              parent="base.menu_automation"
+              groups="base.group_system"
+              sequence="40"/>
+
+</odoo>

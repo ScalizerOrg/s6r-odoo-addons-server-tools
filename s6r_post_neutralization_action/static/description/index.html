@@ -1,0 +1,55 @@
+<section class="oe_container ">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan" style="color:#A24689;">Scalizer Post Neutralization Action</h2>
+        <h3 class="oe_slogan">s6r_post_neutralization_action</h3>
+        <div class="oe_slogan">
+            <p class="oe_mt32 oe_mb32 text-center">
+                Run a configurable, ordered list of server actions right after a database neutralization
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h3 class="oe_slogan">Description</h3>
+        <p>This module lets an administrator configure an ordered list of server actions (<code>ir.actions.server</code>) to run automatically right after a database neutralization (odoo.sh duplicate/restore, <code>odoo neutralize</code> command).</p>
+        <p>It patches <code>odoo.modules.neutralize.neutralize_database</code> via a <code>post_load</code> hook: the standard neutralization always runs first and is committed, then the configured <code>post.neutralization.action</code> lines are executed in order.</p>
+        <p>With no line configured, the module has no effect on the standard neutralization behavior.</p>
+    </div>
+</section>
+
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <h3 class="oe_slogan">Usage</h3>
+        <h4>Configure a post-neutralization action</h4>
+        <ol>
+            <li>Enable developer mode.</li>
+            <li>Go to <code>Settings &gt; Technical &gt; Automation &gt; Post Neutralization Actions</code>.</li>
+            <li>Add a line: pick an existing server action and a sequence to control the execution order.</li>
+            <li>Uncheck <code>Active</code> to temporarily disable a line without deleting it.</li>
+        </ol>
+    </div>
+</section>
+
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h3 class="oe_slogan">Configuration</h3>
+        <p>No specific configuration required.</p>
+    </div>
+</section>
+
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced" style="display: flex;align-items: center;">
+        <div class="col-md-6 text-center">
+            <img src="logo.png" alt="Scalizer Post Neutralization Action"/>
+        </div>
+        <div class="col-md-6 text-center">
+            <a class="btn btn-primary btn-lg mt8 align-middle" href="https://www.scalizer.fr/contact"><i
+                    class="fa fa-envelope-o"></i> Contact US </a>
+        </div>
+    </div>
+</section>
