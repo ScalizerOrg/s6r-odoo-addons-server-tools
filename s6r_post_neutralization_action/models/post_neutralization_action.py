@@ -1,9 +1,9 @@
 from odoo import fields, models
 
 
-class NeutralizeAction(models.Model):
-    _name = 'neutralize.action'
-    _description = 'Server action to run after a database neutralization'
+class PostNeutralizationAction(models.Model):
+    _name = 'post.neutralization.action'
+    _description = 'Post Neutralization Actions'
     _order = 'sequence, id'
 
     sequence = fields.Integer(default=10, help="Determines the execution order after the neutralization.")

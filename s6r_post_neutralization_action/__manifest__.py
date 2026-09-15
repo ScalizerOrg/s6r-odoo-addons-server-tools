@@ -1,7 +1,7 @@
 # Copyright (C) 2026 - Scalizer (<https://www.scalizer.fr>).
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).
 {
-    'name': 'Scalizer Neutralize Server Action',
+    'name': 'Scalizer Post Neutralization Action',
     'version': '19.0.1.0.0',
     'author': 'Scalizer',
     'website': 'https://www.scalizer.fr',
@@ -29,7 +29,7 @@ top of the standard neutralization.
         'security/ir.model.access.csv',
 
         # Views
-        'views/neutralize_action_views.xml',
+        'views/post_neutralization_action_views.xml',
     ],
     'post_load': 'post_load_neutralize_patch',
     'auto_install': False,

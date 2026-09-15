@@ -1,15 +1,15 @@
-Scalizer Neutralize Server Action
+Scalizer Post Neutralization Action
 ===============
 
 This module lets an administrator configure an ordered list of server actions to run automatically right after a database neutralization (odoo.sh duplicate/restore, `odoo neutralize` command), on top of the standard neutralization.
 
-It patches `odoo.modules.neutralize.neutralize_database` via a `post_load` hook: the standard neutralization always runs first and is left untouched, then the configured `neutralize.action` lines are executed in order. With no line configured, the module has no effect.
+It patches `odoo.modules.neutralize.neutralize_database` via a `post_load` hook: the standard neutralization always runs first and is committed, then the configured `post.neutralization.action` lines are executed in order. With no line configured, the module has no effect.
 
 
 ## Usage
 
 1. Enable developer mode.
-2. Go to `Settings > Technical > Automation > Neutralize Server Actions`.
+2. Go to `Settings > Technical > Automation > Post Neutralization Actions`.
 3. Add a line: pick an existing `ir.actions.server` and a `Sequence` to control the execution order.
 4. Uncheck `Active` to temporarily disable a line without deleting it.
 
