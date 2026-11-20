@@ -74,6 +74,19 @@ class IrActionsServer(models.Model):
             except requests.exceptions.RequestException as e:
                 _logger.warning("Webhook call failed: %s", e)
 
+    def _compute_webhook_sample_payload(self):  # pylint: disable=missing-return
+        """Also reflect ``webhook_extra_payload`` in the sample payload preview."""
+        super()._compute_webhook_sample_payload()
+        for action in self:
+            if action.state != 'webhook' or not action.webhook_extra_payload:
+                continue
+            sample_record = self.env[action.model_id.model].with_context(active_test=False).search([], limit=1)
+            if not sample_record:
+                continue
+            payload = json.loads(action.webhook_sample_payload)
+            action._merge_webhook_extra_payload(payload, sample_record)
+            action.webhook_sample_payload = json.dumps(payload, indent=4, sort_keys=True, default=str)
+
     def _merge_webhook_extra_payload(self, vals, record):
         """Evaluate ``webhook_extra_payload`` and merge its result into ``vals``."""
         self.ensure_one()
