@@ -1,0 +1,55 @@
+<section class="oe_container ">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan" style="color:#A24689;">Scalizer Webhook Extra Payload</h2>
+        <h3 class="oe_slogan">s6r_webhook_extra_payload</h3>
+        <div class="oe_slogan">
+            <p class="oe_mt32 oe_mb32 text-center">
+                Add a configurable Python expression to extend native webhook server action payloads
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h3 class="oe_slogan">Description</h3>
+        <p>This module adds an "Extra Payload (Python Expression)" field on the native Odoo webhook server action (<code>ir.actions.server</code>, "Send Webhook Notification").</p>
+        <p>The expression is evaluated in a restricted (<code>safe_eval</code>) context with <code>record</code>, <code>user</code> and <code>env</code> available, and its result, a dict, is merged into the webhook payload alongside the standard <code>_model</code>/<code>_id</code>/<code>_action</code> and the selected <code>Fields</code>.</p>
+        <p>Lets an administrator send data that is not a field of the triggering record, such as the id of the user who triggered the action, without any code change.</p>
+    </div>
+</section>
+
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <h3 class="oe_slogan">Usage</h3>
+        <h4>Add an extra payload to a webhook action</h4>
+        <ol>
+            <li>Enable developer mode.</li>
+            <li>Go to <code>Settings &gt; Technical &gt; Automation &gt; Server Actions</code>.</li>
+            <li>Open a server action with <code>Action To Do</code> set to <code>Send Webhook Notification</code>.</li>
+            <li>Fill in <code>Extra Payload</code> with a Python expression returning a dict, e.g. <code>{'user_id': user.id}</code>.</li>
+        </ol>
+    </div>
+</section>
+
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h3 class="oe_slogan">Configuration</h3>
+        <p>No specific configuration required.</p>
+    </div>
+</section>
+
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced" style="display: flex;align-items: center;">
+        <div class="col-md-6 text-center">
+            <img src="logo.png" alt="Scalizer Webhook Extra Payload"/>
+        </div>
+        <div class="col-md-6 text-center">
+            <a class="btn btn-primary btn-lg mt8 align-middle" href="https://www.scalizer.fr/contact"><i
+                    class="fa fa-envelope-o"></i> Contact US </a>
+        </div>
+    </div>
+</section>
